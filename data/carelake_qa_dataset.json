@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "question": "What is the total medical claim cost for inpatient encounters?",
+    "gold_sql": "SELECT sum(total_claim_cost) FROM encounters WHERE encounter_class = 'INPATIENT'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 2,
+    "question": "Count the number of patients with type 2 diabetes.",
+    "gold_sql": "SELECT count(distinct patient_id) FROM conditions WHERE condition_code = 'E11.9'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 3,
+    "question": "Calculate the average length of stay in hours for emergency admissions.",
+    "gold_sql": "SELECT avg(length_of_stay_hours) FROM encounters WHERE encounter_class = 'EMERGENCY'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 4,
+    "question": "Find patients who were readmitted within 30 days of inpatient discharge.",
+    "gold_sql": "SELECT count(*) FROM mart_readmission_30d WHERE is_30day_readmission = 1",
+    "complexity": "HARD"
+  }
+]
