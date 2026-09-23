@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use SQLSage in research, please cite as below."
+authors:
+- family-names: "Gattu"
+  given-names: "Pruthvi Nag"
+title: "SQLSage: Schema-Guided Constrained Decoding and Execution-Grounded Progressive Self-Correction"
+version: 1.0.0
+date-released: 2026-09-24
+url: "https://github.com/pruthvi51/sqlsage"
