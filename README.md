@@ -28,3 +28,16 @@ Enterprise-grade, agentic natural-language-to-SQL translation platform achieving
 - **Zero Hallucinations**: Schema-Guided Constrained Decoding (SGCD) eliminated **100% of syntax errors and hallucinated column references**.
 - **Context Compression**: Steiner tree subgraph extraction and MinHash LSH reduced prompt token overhead by **68%** while lifting retrieval recall to **94.6%**.
 - **Progressive Self-Correction**: Sandbox execution feedback loop repaired **41% of initial semantic errors** without human intervention.
+
+## Research Paper & Citation
+The full IEEE technical report is available at [paper/sqlsage_architecture_paper.pdf](paper/sqlsage_architecture_paper.pdf).
+
+```bibtex
+@article{gattu2026sqlsage,
+  author = {Gattu, Pruthvi Nag},
+  title = {SQLSage: Schema-Guided Constrained Decoding and Execution-Grounded Progressive Self-Correction for Enterprise Healthcare NL-to-SQL},
+  journal = {Technical Report},
+  year = {2026},
+  url = {https://github.com/pruthvi51/sqlsage}
+}
+```
