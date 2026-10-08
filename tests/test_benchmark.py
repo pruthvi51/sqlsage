@@ -1,5 +1,6 @@
 from sqlsage.eval.benchmark import run_evaluation_benchmark
 
+
 def test_benchmark_metrics():
     res = run_evaluation_benchmark()
     assert res["execution_accuracy_pct"] == 84.2

@@ -1,5 +1,7 @@
 from click.testing import CliRunner
+
 from sqlsage.cli import cli
+
 
 def test_cli_translate():
     runner = CliRunner()

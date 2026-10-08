@@ -1,5 +1,6 @@
 from sqlsage.constrained_decoding.grammar_mask import GrammarMaskValidator
 
+
 def test_valid_query():
     schema = {"patients": ["patient_id", "first_name"], "encounters": ["encounter_id", "patient_id"]}
     validator = GrammarMaskValidator(schema)

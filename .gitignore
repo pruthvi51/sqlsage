@@ -16,3 +16,4 @@ paper/*.bbl
 paper/*.blg
 .DS_Store
 .env
+*.egg-info/

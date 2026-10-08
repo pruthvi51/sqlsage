@@ -2,16 +2,17 @@
 Schema-Guided Constrained Decoding (SGCD):
 Validates and sanitizes SQL AST to ensure 100% adherence to schema tables and columns.
 """
+
 import sqlglot
 from sqlglot import exp
-from typing import Set, Dict, List, Tuple
+
 
 class GrammarMaskValidator:
-    def __init__(self, valid_schema: Dict[str, List[str]]):
-        self.valid_tables = {t.lower() for t in valid_schema.keys()}
+    def __init__(self, valid_schema: dict[str, list[str]]):
+        self.valid_tables = {t.lower() for t in valid_schema}
         self.valid_columns = {t.lower(): {c.lower() for c in cols} for t, cols in valid_schema.items()}
 
-    def validate_ast(self, sql_query: str) -> Tuple[bool, List[str]]:
+    def validate_ast(self, sql_query: str) -> tuple[bool, list[str]]:
         try:
             parsed = sqlglot.parse_one(sql_query)
         except Exception as e:

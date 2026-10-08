@@ -1,5 +1,6 @@
 from sqlsage.agent.self_correction import SandboxExecutionEngine
 
+
 def test_sandbox_execution_success():
     sandbox = SandboxExecutionEngine()
     sql = "SELECT count(*) FROM patients;"

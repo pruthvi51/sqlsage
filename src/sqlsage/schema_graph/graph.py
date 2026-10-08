@@ -1,14 +1,15 @@
 """
 NetworkX Relational Schema Graph and Steiner Tree Subgraph Extractor.
 """
+
 import networkx as nx
-from typing import List, Set, Dict
+
 
 class SchemaGraph:
     def __init__(self):
         self.graph = nx.Graph()
 
-    def add_table(self, table_name: str, columns: List[str]):
+    def add_table(self, table_name: str, columns: list[str]):
         self.graph.add_node(table_name, type="table", columns=columns)
         for col in columns:
             node_id = f"{table_name}.{col}"
@@ -18,7 +19,7 @@ class SchemaGraph:
     def add_foreign_key(self, from_table: str, to_table: str, join_condition: str):
         self.graph.add_edge(from_table, to_table, weight=2.0, join_condition=join_condition)
 
-    def extract_connecting_subgraph(self, target_tables: List[str]) -> List[str]:
+    def extract_connecting_subgraph(self, target_tables: list[str]) -> list[str]:
         """
         Extracts minimum Steiner-tree connecting path between target tables.
         """

@@ -1,6 +1,7 @@
 from sqlsage.schema_graph.graph import SchemaGraph
 from sqlsage.schema_graph.minhash_lsh import MinHashLSHIndex
 
+
 def test_steiner_tree_path():
     sg = SchemaGraph()
     sg.add_table("patients", ["patient_id", "first_name"])

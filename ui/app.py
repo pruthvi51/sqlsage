@@ -2,7 +2,6 @@
 SQLSage Streamlit Interactive NL-to-SQL Workbench.
 """
 import streamlit as st
-import pandas as pd
 
 st.set_page_config(page_title="SQLSage NL-to-SQL", page_icon="🧙‍♂️", layout="wide")
 st.title("🧙‍♂️ SQLSage: Autonomous Enterprise NL-to-SQL Workbench")
