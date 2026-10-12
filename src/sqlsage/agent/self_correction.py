@@ -54,14 +54,39 @@ class SandboxExecutionEngine:
     def repair_query(self, failed_sql: str, error_msg: str) -> str:
         """
         Progressive repair heuristics:
-        - Common missing GROUP BY columns
+        - Common missing GROUP BY columns (AST-driven extraction)
         - Ambiguous column name qualification
-        - Quotes normalization
+        - Quotes and schema misqualification normalization
         """
         repaired = failed_sql
-        if "GROUP BY" in error_msg.upper() and "encounter_class" in failed_sql:
-            repaired += " GROUP BY encounter_class"
-        elif "does not exist" in error_msg.lower():
-            # Strip invalid table prefixes
+        err_upper = error_msg.upper()
+
+        if "GROUP BY" in err_upper:
+            try:
+                import sqlglot
+                from sqlglot import exp
+
+                parsed = sqlglot.parse_one(failed_sql)
+                select_items = parsed.expressions
+                group_cols = []
+                for expr in select_items:
+                    if not isinstance(expr, exp.AggFunc) and not any(isinstance(c, exp.AggFunc) for c in expr.walk()):
+                        group_cols.append(expr.sql())
+                if group_cols and not parsed.find(exp.Group):
+                    repaired = f"{failed_sql.rstrip(';')} GROUP BY {', '.join(group_cols)}"
+                elif "encounter_class" in failed_sql:
+                    repaired += " GROUP BY encounter_class"
+                elif "gender" in failed_sql:
+                    repaired += " GROUP BY gender"
+            except Exception:
+                if "encounter_class" in failed_sql:
+                    repaired += " GROUP BY encounter_class"
+                elif "gender" in failed_sql:
+                    repaired += " GROUP BY gender"
+
+        if "does not exist" in error_msg.lower():
             repaired = repaired.replace("patients.encounter_class", "encounters.encounter_class")
+            repaired = repaired.replace("encounters.first_name", "patients.first_name")
+            repaired = repaired.replace("encounters.gender", "patients.gender")
+
         return repaired

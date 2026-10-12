@@ -1,3 +1,7 @@
+PYTHON ?= $(shell if [ -f ../.venv/bin/python3 ]; then echo ../.venv/bin/python3; elif [ -f .venv/bin/python3 ]; then echo .venv/bin/python3; else which python3; fi)
+PYTEST ?= $(shell if [ -f ../.venv/bin/pytest ]; then echo ../.venv/bin/pytest; elif [ -f .venv/bin/pytest ]; then echo .venv/bin/pytest; else which pytest; fi)
+STREAMLIT ?= $(shell if [ -f ../.venv/bin/streamlit ]; then echo ../.venv/bin/streamlit; elif [ -f .venv/bin/streamlit ]; then echo .venv/bin/streamlit; else which streamlit; fi)
+
 .PHONY: help setup test demo bench paper clean
 
 help:
@@ -12,13 +16,13 @@ setup:
 	uv pip install -e ".[dev]"
 
 test:
-	pytest -v tests/
+	$(PYTEST) -v tests/
 
 demo:
-	streamlit run ui/app.py
+	$(STREAMLIT) run ui/app.py
 
 bench:
-	python3 -m sqlsage.eval.benchmark
+	$(PYTHON) -m sqlsage.eval.benchmark
 
 paper:
 	cd paper && tectonic sqlsage_architecture_paper.tex

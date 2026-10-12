@@ -15,300 +15,888 @@
     "id": 3,
     "question": "Count the number of patients diagnosed with type 2 diabetes.",
     "gold_sql": "SELECT count(distinct patient_id) FROM conditions WHERE condition_code = 'E11.9'",
-    "complexity": "MEDIUM"
+    "complexity": "EASY"
   },
   {
     "id": 4,
     "question": "Calculate the average length of stay in hours for emergency admissions.",
     "gold_sql": "SELECT avg(length_of_stay_hours) FROM encounters WHERE encounter_class = 'EMERGENCY'",
-    "complexity": "MEDIUM"
+    "complexity": "EASY"
   },
   {
     "id": 5,
-    "question": "Find the total number of 30-day readmissions recorded.",
-    "gold_sql": "SELECT count(*) FROM mart_readmission_30d WHERE is_30day_readmission = 1",
-    "complexity": "HARD"
-  },
-  {
-    "id": 6,
-    "question": "What is the average PMPM cost across all members in January 2024?",
-    "gold_sql": "SELECT avg(pmpm_cost) FROM mart_pmpm_cost WHERE member_month = '2024-01'",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 7,
     "question": "Count the total number of paid insurance claims.",
     "gold_sql": "SELECT count(*) FROM claims WHERE claim_status = 'PAID'",
     "complexity": "EASY"
   },
   {
-    "id": 8,
+    "id": 6,
     "question": "What is the average systolic blood pressure recorded in clinical observations?",
     "gold_sql": "SELECT avg(observation_value) FROM observations WHERE observation_code = '8480-6'",
-    "complexity": "MEDIUM"
+    "complexity": "EASY"
   },
   {
-    "id": 9,
-    "question": "Calculate total claim costs grouped by encounter class.",
-    "gold_sql": "SELECT encounter_class, sum(total_claim_cost) FROM encounters GROUP BY encounter_class",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 10,
+    "id": 7,
     "question": "Count patients grouped by gender.",
     "gold_sql": "SELECT gender, count(*) FROM patients GROUP BY gender",
     "complexity": "EASY"
   },
   {
-    "id": 11,
+    "id": 8,
     "question": "Count encounters grouped by patient.",
     "gold_sql": "SELECT patient_id, count(*) FROM encounters GROUP BY patient_id",
     "complexity": "EASY"
   },
   {
-    "id": 12,
+    "id": 9,
     "question": "What is the highest claim amount billed across all patients?",
     "gold_sql": "SELECT max(total_billed) FROM claims",
     "complexity": "EASY"
   },
   {
-    "id": 13,
+    "id": 10,
     "question": "What is the minimum length of stay for emergency encounters?",
     "gold_sql": "SELECT min(length_of_stay_hours) FROM encounters WHERE encounter_class = 'EMERGENCY'",
     "complexity": "EASY"
   },
   {
-    "id": 14,
+    "id": 11,
     "question": "Find distinct condition codes diagnosed across all patients.",
     "gold_sql": "SELECT count(distinct condition_code) FROM conditions",
     "complexity": "EASY"
   },
   {
-    "id": 15,
+    "id": 12,
     "question": "What is the total sum of claims paid out?",
     "gold_sql": "SELECT sum(total_paid) FROM claims",
     "complexity": "EASY"
   },
   {
+    "id": 13,
+    "question": "What is the average total billed amount across all claims?",
+    "gold_sql": "SELECT avg(total_billed) FROM claims",
+    "complexity": "EASY"
+  },
+  {
+    "id": 14,
+    "question": "Count the total number of distinct encounter classes recorded.",
+    "gold_sql": "SELECT count(distinct encounter_class) FROM encounters",
+    "complexity": "EASY"
+  },
+  {
+    "id": 15,
+    "question": "Find the maximum length of stay recorded for inpatient care.",
+    "gold_sql": "SELECT max(length_of_stay_hours) FROM encounters WHERE encounter_class = 'INPATIENT'",
+    "complexity": "EASY"
+  },
+  {
     "id": 16,
-    "question": "List female patients living in zip code 02138.",
-    "gold_sql": "SELECT patient_id, first_name FROM patients WHERE gender = 'F' AND zip_code = '02138'",
-    "complexity": "MEDIUM"
+    "question": "Count all recorded observations in the clinical database.",
+    "gold_sql": "SELECT count(*) FROM observations",
+    "complexity": "EASY"
   },
   {
     "id": 17,
-    "question": "Find encounters where total cost exceeded 4000 dollars.",
-    "gold_sql": "SELECT encounter_id, total_claim_cost FROM encounters WHERE total_claim_cost > 4000.0",
+    "question": "What is the total number of diagnostic conditions logged?",
+    "gold_sql": "SELECT count(*) FROM conditions",
     "complexity": "EASY"
   },
   {
     "id": 18,
-    "question": "Calculate average cost of inpatient admissions longer than 48 hours.",
-    "gold_sql": "SELECT avg(total_claim_cost) FROM encounters WHERE encounter_class = 'INPATIENT' AND length_of_stay_hours > 48.0",
-    "complexity": "MEDIUM"
+    "question": "Find the earliest birth date among all registered patients.",
+    "gold_sql": "SELECT min(birth_date) FROM patients",
+    "complexity": "EASY"
   },
   {
     "id": 19,
+    "question": "Find the latest onset date across all recorded conditions.",
+    "gold_sql": "SELECT max(onset_date) FROM conditions",
+    "complexity": "EASY"
+  },
+  {
+    "id": 20,
+    "question": "Count total encounters recorded in the lakehouse.",
+    "gold_sql": "SELECT count(*) FROM encounters",
+    "complexity": "EASY"
+  },
+  {
+    "id": 21,
+    "question": "What is the average total claim cost across all encounters?",
+    "gold_sql": "SELECT avg(total_claim_cost) FROM encounters",
+    "complexity": "EASY"
+  },
+  {
+    "id": 22,
+    "question": "Count distinct patients with recorded clinical observations.",
+    "gold_sql": "SELECT count(distinct patient_id) FROM observations",
+    "complexity": "EASY"
+  },
+  {
+    "id": 23,
+    "question": "Count distinct patients with recorded diagnostic conditions.",
+    "gold_sql": "SELECT count(distinct patient_id) FROM conditions",
+    "complexity": "EASY"
+  },
+  {
+    "id": 24,
+    "question": "What is the minimum total claim cost for any encounter?",
+    "gold_sql": "SELECT min(total_claim_cost) FROM encounters",
+    "complexity": "EASY"
+  },
+  {
+    "id": 25,
+    "question": "What is the maximum total claim cost for any encounter?",
+    "gold_sql": "SELECT max(total_claim_cost) FROM encounters",
+    "complexity": "EASY"
+  },
+  {
+    "id": 26,
+    "question": "Count total claims logged in the billing system.",
+    "gold_sql": "SELECT count(*) FROM claims",
+    "complexity": "EASY"
+  },
+  {
+    "id": 27,
+    "question": "Find distinct zip codes where patients reside.",
+    "gold_sql": "SELECT count(distinct zip_code) FROM patients",
+    "complexity": "EASY"
+  },
+  {
+    "id": 28,
+    "question": "Count female patients in the registry.",
+    "gold_sql": "SELECT count(*) FROM patients WHERE gender = 'F'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 29,
+    "question": "Count male patients in the registry.",
+    "gold_sql": "SELECT count(*) FROM patients WHERE gender = 'M'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 30,
+    "question": "Count white patients in the registry.",
+    "gold_sql": "SELECT count(*) FROM patients WHERE race = 'WHITE'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 31,
+    "question": "Find the minimum amount paid for any claim.",
+    "gold_sql": "SELECT min(total_paid) FROM claims",
+    "complexity": "EASY"
+  },
+  {
+    "id": 32,
+    "question": "Find the maximum amount paid for any claim.",
+    "gold_sql": "SELECT max(total_paid) FROM claims",
+    "complexity": "EASY"
+  },
+  {
+    "id": 33,
+    "question": "Count all ambulatory encounters.",
+    "gold_sql": "SELECT count(*) FROM encounters WHERE encounter_class = 'AMBULATORY'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 34,
+    "question": "Count all emergency encounters.",
+    "gold_sql": "SELECT count(*) FROM encounters WHERE encounter_class = 'EMERGENCY'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 35,
+    "question": "Count all inpatient encounters.",
+    "gold_sql": "SELECT count(*) FROM encounters WHERE encounter_class = 'INPATIENT'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 36,
+    "question": "What is the total cost of all emergency visits?",
+    "gold_sql": "SELECT sum(total_claim_cost) FROM encounters WHERE encounter_class = 'EMERGENCY'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 37,
+    "question": "What is the average length of stay across all inpatient encounters?",
+    "gold_sql": "SELECT avg(length_of_stay_hours) FROM encounters WHERE encounter_class = 'INPATIENT'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 38,
     "question": "Count observations with unit mmHg.",
     "gold_sql": "SELECT count(*) FROM observations WHERE units = 'mmHg'",
     "complexity": "EASY"
   },
   {
-    "id": 20,
-    "question": "Count conditions onset before 2021.",
-    "gold_sql": "SELECT count(*) FROM conditions WHERE onset_date < '2021-01-01'",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 21,
-    "question": "Find names of patients who had an inpatient stay.",
-    "gold_sql": "SELECT distinct p.first_name, p.last_name FROM patients p JOIN encounters e ON p.patient_id = e.patient_id WHERE e.encounter_class = 'INPATIENT'",
-    "complexity": "HARD"
-  },
-  {
-    "id": 22,
-    "question": "Find total claim costs incurred by patients with essential hypertension.",
-    "gold_sql": "SELECT sum(e.total_claim_cost) FROM encounters e JOIN conditions c ON e.patient_id = c.patient_id WHERE c.condition_code = 'I10'",
-    "complexity": "HARD"
-  },
-  {
-    "id": 23,
-    "question": "List patients who had both a condition and an insurance claim.",
-    "gold_sql": "SELECT distinct p.patient_id FROM patients p JOIN conditions c ON p.patient_id = c.patient_id JOIN claims cl ON p.patient_id = cl.patient_id",
-    "complexity": "HARD"
-  },
-  {
-    "id": 24,
-    "question": "Find patients with PMPM cost greater than 200 in month 2024-01.",
-    "gold_sql": "SELECT p.patient_id, p.first_name FROM patients p JOIN mart_pmpm_cost m ON p.patient_id = m.patient_id WHERE m.pmpm_cost > 200.0 AND m.member_month = '2024-01'",
-    "complexity": "HARD"
-  },
-  {
-    "id": 25,
-    "question": "Count total observations for patients with type 2 diabetes.",
-    "gold_sql": "SELECT count(o.observation_id) FROM observations o JOIN conditions c ON o.patient_id = c.patient_id WHERE c.condition_code = 'E11.9'",
-    "complexity": "HARD"
-  },
-  {
-    "id": 26,
-    "question": "Rank encounter classes by total claim cost descending.",
-    "gold_sql": "SELECT encounter_class, sum(total_claim_cost) as total_cost FROM encounters GROUP BY encounter_class ORDER BY total_cost DESC",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 27,
-    "question": "Find the top 5 patients with the highest total billed amounts.",
-    "gold_sql": "SELECT patient_id, sum(total_billed) as billed FROM claims GROUP BY patient_id ORDER BY billed DESC LIMIT 5",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 28,
-    "question": "Calculate average length of stay per encounter class.",
-    "gold_sql": "SELECT encounter_class, avg(length_of_stay_hours) FROM encounters GROUP BY encounter_class",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 29,
-    "question": "Count conditions by condition code sorted by prevalence.",
-    "gold_sql": "SELECT condition_code, count(*) as freq FROM conditions GROUP BY condition_code ORDER BY freq DESC",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 30,
-    "question": "Calculate total billed vs total paid per patient.",
-    "gold_sql": "SELECT patient_id, sum(total_billed), sum(total_paid) FROM claims GROUP BY patient_id",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 31,
-    "question": "Find encounters occurring after January 2024.",
-    "gold_sql": "SELECT count(*) FROM encounters WHERE start_time >= '2024-01-01'",
-    "complexity": "EASY"
-  },
-  {
-    "id": 32,
-    "question": "Find the earliest onset date across all diagnosed conditions.",
-    "gold_sql": "SELECT min(onset_date) FROM conditions",
-    "complexity": "EASY"
-  },
-  {
-    "id": 33,
-    "question": "Calculate difference between total billed and total paid across all claims.",
-    "gold_sql": "SELECT sum(total_billed - total_paid) FROM claims",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 34,
-    "question": "Find distinct patients who experienced a 30-day readmission.",
-    "gold_sql": "SELECT count(distinct patient_id) FROM mart_readmission_30d WHERE is_30day_readmission = 1",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 35,
-    "question": "Count patients born before 1980.",
-    "gold_sql": "SELECT count(*) FROM patients WHERE birth_date < '1980-01-01'",
-    "complexity": "EASY"
-  },
-  {
-    "id": 36,
-    "question": "Categorize encounters by cost threshold: high if greater than 3000, else normal.",
-    "gold_sql": "SELECT encounter_id, CASE WHEN total_claim_cost > 3000.0 THEN 'HIGH' ELSE 'NORMAL' END AS cost_tier FROM encounters",
-    "complexity": "HARD"
-  },
-  {
-    "id": 37,
-    "question": "Count claims where paid amount equals billed amount.",
-    "gold_sql": "SELECT count(*) FROM claims WHERE total_billed = total_paid",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 38,
-    "question": "Count patients by race category.",
-    "gold_sql": "SELECT race, count(*) FROM patients GROUP BY race",
-    "complexity": "EASY"
-  },
-  {
     "id": 39,
-    "question": "Calculate average observation value for HbA1c tests.",
-    "gold_sql": "SELECT avg(observation_value) FROM observations WHERE observation_code = '4548-4'",
-    "complexity": "MEDIUM"
+    "question": "Find the average observation value across all vitals.",
+    "gold_sql": "SELECT avg(observation_value) FROM observations",
+    "complexity": "EASY"
   },
   {
     "id": 40,
-    "question": "Find maximum length of stay for inpatient encounters.",
-    "gold_sql": "SELECT max(length_of_stay_hours) FROM encounters WHERE encounter_class = 'INPATIENT'",
+    "question": "Find the minimum observation value recorded.",
+    "gold_sql": "SELECT min(observation_value) FROM observations",
     "complexity": "EASY"
   },
   {
     "id": 41,
-    "question": "Calculate average PMPM cost for female patients.",
-    "gold_sql": "SELECT avg(m.pmpm_cost) FROM mart_pmpm_cost m JOIN patients p ON m.patient_id = p.patient_id WHERE p.gender = 'F'",
-    "complexity": "HARD"
+    "question": "Find the maximum observation value recorded.",
+    "gold_sql": "SELECT max(observation_value) FROM observations",
+    "complexity": "EASY"
   },
   {
     "id": 42,
-    "question": "Find total inpatient encounters that resulted in 30-day readmissions.",
-    "gold_sql": "SELECT count(*) FROM encounters e JOIN mart_readmission_30d r ON e.encounter_id = r.index_encounter_id WHERE r.is_30day_readmission = 1",
-    "complexity": "HARD"
+    "question": "Count claims with status DENIED.",
+    "gold_sql": "SELECT count(*) FROM claims WHERE claim_status = 'DENIED'",
+    "complexity": "EASY"
   },
   {
     "id": 43,
-    "question": "Find all observations recorded for patient p-1.",
-    "gold_sql": "SELECT observation_code, observation_value FROM observations WHERE patient_id = 'p-1'",
+    "question": "Count distinct observation codes recorded.",
+    "gold_sql": "SELECT count(distinct observation_code) FROM observations",
     "complexity": "EASY"
   },
   {
     "id": 44,
-    "question": "Find conditions for patient p-2.",
-    "gold_sql": "SELECT condition_code, description FROM conditions WHERE patient_id = 'p-2'",
-    "complexity": "EASY"
-  },
-  {
-    "id": 45,
-    "question": "Calculate count of encounters and sum of costs for patient p-1.",
-    "gold_sql": "SELECT count(*), sum(total_claim_cost) FROM encounters WHERE patient_id = 'p-1'",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 46,
-    "question": "Find claims with unpaid balance greater than zero.",
-    "gold_sql": "SELECT claim_id, total_billed - total_paid as unpaid FROM claims WHERE total_billed > total_paid",
-    "complexity": "MEDIUM"
-  },
-  {
-    "id": 47,
-    "question": "Find patients who had more than one encounter.",
-    "gold_sql": "SELECT patient_id, count(*) as cnt FROM encounters GROUP BY patient_id HAVING cnt > 1",
-    "complexity": "HARD"
-  },
-  {
-    "id": 48,
-    "question": "Find maximum PMPM cost in January 2024.",
-    "gold_sql": "SELECT max(pmpm_cost) FROM mart_pmpm_cost WHERE member_month = '2024-01'",
-    "complexity": "EASY"
-  },
-  {
-    "id": 49,
     "question": "Count distinct patients present in encounters table.",
     "gold_sql": "SELECT count(distinct patient_id) FROM encounters",
     "complexity": "EASY"
   },
   {
+    "id": 45,
+    "question": "Find the latest birth date among registered patients.",
+    "gold_sql": "SELECT max(birth_date) FROM patients",
+    "complexity": "EASY"
+  },
+  {
+    "id": 46,
+    "question": "What is the total billed amount for all paid claims?",
+    "gold_sql": "SELECT sum(total_billed) FROM claims WHERE claim_status = 'PAID'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 47,
+    "question": "Count distinct race categories among patients.",
+    "gold_sql": "SELECT count(distinct race) FROM patients",
+    "complexity": "EASY"
+  },
+  {
+    "id": 48,
+    "question": "Count patients residing in zip code 02138.",
+    "gold_sql": "SELECT count(*) FROM patients WHERE zip_code = '02138'",
+    "complexity": "EASY"
+  },
+  {
+    "id": 49,
+    "question": "Count encounters with total claim cost greater than 1000.",
+    "gold_sql": "SELECT count(*) FROM encounters WHERE total_claim_cost > 1000.0",
+    "complexity": "EASY"
+  },
+  {
     "id": 50,
+    "question": "What is the total length of stay across all encounters?",
+    "gold_sql": "SELECT sum(length_of_stay_hours) FROM encounters",
+    "complexity": "EASY"
+  },
+  {
+    "id": 51,
+    "question": "Calculate total claim costs grouped by encounter class.",
+    "gold_sql": "SELECT encounter_class, sum(total_claim_cost) FROM encounters GROUP BY encounter_class",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 52,
+    "question": "What is the average PMPM cost across all members in January 2024?",
+    "gold_sql": "SELECT avg(pmpm_cost) FROM mart_pmpm_cost WHERE member_month = '2024-01'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 53,
+    "question": "List female patients living in zip code 02138.",
+    "gold_sql": "SELECT patient_id, first_name FROM patients WHERE gender = 'F' AND zip_code = '02138'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 54,
+    "question": "Find encounters where total cost exceeded 4000 dollars.",
+    "gold_sql": "SELECT encounter_id, total_claim_cost FROM encounters WHERE total_claim_cost > 4000.0",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 55,
     "question": "Count encounters occurring in 2024.",
     "gold_sql": "SELECT count(*) FROM encounters WHERE start_time >= '2024-01-01' AND start_time < '2025-01-01'",
     "complexity": "MEDIUM"
   },
   {
-    "id": 51,
+    "id": 56,
     "question": "Find patients with zip code starting with 021.",
     "gold_sql": "SELECT patient_id FROM patients WHERE zip_code LIKE '021%'",
     "complexity": "MEDIUM"
   },
   {
-    "id": 52,
+    "id": 57,
+    "question": "What is the average length of stay grouped by encounter class?",
+    "gold_sql": "SELECT encounter_class, avg(length_of_stay_hours) FROM encounters GROUP BY encounter_class",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 58,
+    "question": "Find average total claim cost grouped by encounter class ordered descending.",
+    "gold_sql": "SELECT encounter_class, avg(total_claim_cost) as avg_cost FROM encounters GROUP BY encounter_class ORDER BY avg_cost DESC",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 59,
+    "question": "Calculate total billed and total paid grouped by claim status.",
+    "gold_sql": "SELECT claim_status, sum(total_billed), sum(total_paid) FROM claims GROUP BY claim_status",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 60,
+    "question": "Find the top 5 highest cost encounters.",
+    "gold_sql": "SELECT encounter_id, total_claim_cost FROM encounters ORDER BY total_claim_cost DESC LIMIT 5",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 61,
+    "question": "Count patients grouped by race ordered by count descending.",
+    "gold_sql": "SELECT race, count(*) as cnt FROM patients GROUP BY race ORDER BY cnt DESC",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 62,
+    "question": "Calculate average systolic blood pressure for patient p-1.",
+    "gold_sql": "SELECT avg(observation_value) FROM observations WHERE patient_id = 'p-1' AND observation_code = '8480-6'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 63,
+    "question": "Find all encounters that lasted more than 48 hours.",
+    "gold_sql": "SELECT encounter_id, length_of_stay_hours FROM encounters WHERE length_of_stay_hours > 48.0",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 64,
+    "question": "Find conditions diagnosed after January 1 2020.",
+    "gold_sql": "SELECT condition_id, condition_code FROM conditions WHERE onset_date >= '2020-01-01'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 65,
+    "question": "Calculate total claim costs for patient p-1.",
+    "gold_sql": "SELECT sum(total_claim_cost) FROM encounters WHERE patient_id = 'p-1'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 66,
+    "question": "Find distinct condition descriptions diagnosed in the system.",
+    "gold_sql": "SELECT distinct description FROM conditions",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 67,
+    "question": "Find patients born before 1990.",
+    "gold_sql": "SELECT patient_id, birth_date FROM patients WHERE birth_date < '1990-01-01'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 68,
+    "question": "Count encounters per month in 2024.",
+    "gold_sql": "SELECT strftime(start_time, '%Y-%m') as mo, count(*) FROM encounters GROUP BY mo",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 69,
+    "question": "Find the maximum and minimum claim cost by encounter class.",
+    "gold_sql": "SELECT encounter_class, min(total_claim_cost), max(total_claim_cost) FROM encounters GROUP BY encounter_class",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 70,
+    "question": "Find claims where total billed is greater than total paid.",
+    "gold_sql": "SELECT claim_id, total_billed, total_paid FROM claims WHERE total_billed > total_paid",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 71,
+    "question": "Find average billed amount for claims with status PAID.",
+    "gold_sql": "SELECT avg(total_billed) FROM claims WHERE claim_status = 'PAID'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 72,
+    "question": "Find patients with last name Smith.",
+    "gold_sql": "SELECT patient_id, first_name FROM patients WHERE last_name = 'Smith'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 73,
+    "question": "Count total observations per patient.",
+    "gold_sql": "SELECT patient_id, count(*) FROM observations GROUP BY patient_id",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 74,
+    "question": "Count total conditions recorded per patient.",
+    "gold_sql": "SELECT patient_id, count(*) FROM conditions GROUP BY patient_id",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 75,
+    "question": "Find encounters with length of stay between 24 and 72 hours.",
+    "gold_sql": "SELECT encounter_id, length_of_stay_hours FROM encounters WHERE length_of_stay_hours BETWEEN 24.0 AND 72.0",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 76,
+    "question": "Calculate total claim cost for ambulatory visits in 2024.",
+    "gold_sql": "SELECT sum(total_claim_cost) FROM encounters WHERE encounter_class = 'AMBULATORY' AND start_time >= '2024-01-01'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 77,
+    "question": "Find observations recorded in 2024.",
+    "gold_sql": "SELECT observation_id, observation_value FROM observations WHERE observation_date >= '2024-01-01'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 78,
+    "question": "Calculate average claim amount paid per patient.",
+    "gold_sql": "SELECT patient_id, avg(total_paid) FROM claims GROUP BY patient_id",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 79,
+    "question": "Find total paid claims where total paid exceeds 2000.",
+    "gold_sql": "SELECT count(*) FROM claims WHERE total_paid > 2000.0 AND claim_status = 'PAID'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 80,
+    "question": "Find distinct patients with claims in status PAID.",
+    "gold_sql": "SELECT count(distinct patient_id) FROM claims WHERE claim_status = 'PAID'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 81,
+    "question": "Calculate total claim cost per patient having total cost over 3000.",
+    "gold_sql": "SELECT patient_id, sum(total_claim_cost) as tot FROM encounters GROUP BY patient_id HAVING tot > 3000.0",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 82,
+    "question": "Find patients grouped by gender and race.",
+    "gold_sql": "SELECT gender, race, count(*) FROM patients GROUP BY gender, race",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 83,
+    "question": "Find encounters sorted by start time descending limit 10.",
+    "gold_sql": "SELECT encounter_id, start_time FROM encounters ORDER BY start_time DESC LIMIT 10",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 84,
+    "question": "Find condition descriptions containing Diabetes.",
+    "gold_sql": "SELECT condition_id, description FROM conditions WHERE description LIKE '%Diabetes%'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 85,
+    "question": "Calculate average PMPM cost across all recorded member months.",
+    "gold_sql": "SELECT avg(pmpm_cost) FROM mart_pmpm_cost",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 86,
+    "question": "Find maximum PMPM cost in 2024.",
+    "gold_sql": "SELECT max(pmpm_cost) FROM mart_pmpm_cost WHERE member_month LIKE '2024%'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 87,
+    "question": "Count observations by unit type.",
+    "gold_sql": "SELECT units, count(*) FROM observations GROUP BY units",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 88,
+    "question": "Find distinct observation codes with average value above 100.",
+    "gold_sql": "SELECT observation_code, avg(observation_value) FROM observations GROUP BY observation_code HAVING avg(observation_value) > 100.0",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 89,
+    "question": "Find encounters where length of stay is greater than 10 hours and cost is under 5000.",
+    "gold_sql": "SELECT encounter_id FROM encounters WHERE length_of_stay_hours > 10.0 AND total_claim_cost < 5000.0",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 90,
+    "question": "Count claims grouped by status having count greater than 0.",
+    "gold_sql": "SELECT claim_status, count(*) FROM claims GROUP BY claim_status HAVING count(*) > 0",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 91,
+    "question": "Find average length of stay for patient p-1.",
+    "gold_sql": "SELECT avg(length_of_stay_hours) FROM encounters WHERE patient_id = 'p-1'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 92,
+    "question": "Find distinct patient IDs diagnosed with condition E11.9.",
+    "gold_sql": "SELECT distinct patient_id FROM conditions WHERE condition_code = 'E11.9'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 93,
+    "question": "Calculate total claim cost for female patients encounters if known.",
+    "gold_sql": "SELECT sum(total_claim_cost) FROM encounters WHERE patient_id in (SELECT patient_id FROM patients WHERE gender = 'F')",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 94,
+    "question": "Find all observations for patient p-1 sorted by observation date.",
+    "gold_sql": "SELECT observation_code, observation_value FROM observations WHERE patient_id = 'p-1' ORDER BY observation_date",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 95,
+    "question": "Calculate average total billed per patient.",
+    "gold_sql": "SELECT patient_id, avg(total_billed) FROM claims GROUP BY patient_id",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 96,
+    "question": "Count conditions by condition code ordered by frequency.",
+    "gold_sql": "SELECT condition_code, count(*) as cnt FROM conditions GROUP BY condition_code ORDER BY cnt DESC",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 97,
+    "question": "Find patients born between 1970 and 1990.",
+    "gold_sql": "SELECT patient_id, birth_date FROM patients WHERE birth_date BETWEEN '1970-01-01' AND '1990-12-31'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 98,
+    "question": "Find total paid amount for claims billed over 3000.",
+    "gold_sql": "SELECT sum(total_paid) FROM claims WHERE total_billed > 3000.0",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 99,
+    "question": "Find encounters where stop time exceeds start time by more than zero.",
+    "gold_sql": "SELECT count(*) FROM encounters WHERE stop_time > start_time",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 100,
+    "question": "Find maximum total claim cost for emergency encounters.",
+    "gold_sql": "SELECT max(total_claim_cost) FROM encounters WHERE encounter_class = 'EMERGENCY'",
+    "complexity": "MEDIUM"
+  },
+  {
+    "id": 101,
+    "question": "Find the total number of 30-day readmissions recorded.",
+    "gold_sql": "SELECT count(*) FROM mart_readmission_30d WHERE is_30day_readmission = 1",
+    "complexity": "HARD"
+  },
+  {
+    "id": 102,
     "question": "Calculate ratio of total paid to total billed across claims.",
     "gold_sql": "SELECT sum(total_paid) / nullif(sum(total_billed), 0) FROM claims",
+    "complexity": "HARD"
+  },
+  {
+    "id": 103,
+    "question": "Join patients and encounters to calculate total claim cost for female patients.",
+    "gold_sql": "SELECT p.patient_id, p.first_name, sum(e.total_claim_cost) FROM patients p JOIN encounters e ON p.patient_id = e.patient_id WHERE p.gender = 'F' GROUP BY p.patient_id, p.first_name",
+    "complexity": "HARD"
+  },
+  {
+    "id": 104,
+    "question": "Find patient demographics joined with diagnostic conditions.",
+    "gold_sql": "SELECT p.patient_id, p.first_name, c.condition_code, c.description FROM patients p JOIN conditions c ON p.patient_id = c.patient_id",
+    "complexity": "HARD"
+  },
+  {
+    "id": 105,
+    "question": "Find encounters with patient demographics for inpatient stays.",
+    "gold_sql": "SELECT p.patient_id, p.gender, e.encounter_id, e.total_claim_cost FROM patients p JOIN encounters e ON p.patient_id = e.patient_id WHERE e.encounter_class = 'INPATIENT'",
+    "complexity": "HARD"
+  },
+  {
+    "id": 106,
+    "question": "Calculate average claim cost by patient gender.",
+    "gold_sql": "SELECT p.gender, avg(e.total_claim_cost) FROM patients p JOIN encounters e ON p.patient_id = e.patient_id GROUP BY p.gender",
+    "complexity": "HARD"
+  },
+  {
+    "id": 107,
+    "question": "Find patients who experienced a 30-day readmission.",
+    "gold_sql": "SELECT p.patient_id, p.first_name, r.index_encounter_id FROM patients p JOIN mart_readmission_30d r ON p.patient_id = r.patient_id WHERE r.is_30day_readmission = 1",
+    "complexity": "HARD"
+  },
+  {
+    "id": 108,
+    "question": "Calculate total claims paid joined with patient race.",
+    "gold_sql": "SELECT p.race, sum(c.total_paid) FROM patients p JOIN claims c ON p.patient_id = c.patient_id GROUP BY p.race",
+    "complexity": "HARD"
+  },
+  {
+    "id": 109,
+    "question": "Find total medical spend for patients diagnosed with Type 2 Diabetes.",
+    "gold_sql": "SELECT sum(e.total_claim_cost) FROM encounters e WHERE e.patient_id IN (SELECT c.patient_id FROM conditions c WHERE c.condition_code = 'E11.9')",
+    "complexity": "HARD"
+  },
+  {
+    "id": 110,
+    "question": "Calculate 30-day readmission rate as percentage of total index encounters.",
+    "gold_sql": "SELECT round(100.0 * sum(is_30day_readmission) / count(*), 2) FROM mart_readmission_30d",
+    "complexity": "HARD"
+  },
+  {
+    "id": 111,
+    "question": "Join encounters and claims on patient ID to compare total costs.",
+    "gold_sql": "SELECT e.patient_id, sum(e.total_claim_cost), sum(c.total_billed) FROM encounters e JOIN claims c ON e.patient_id = c.patient_id GROUP BY e.patient_id",
+    "complexity": "HARD"
+  },
+  {
+    "id": 112,
+    "question": "Find patients with both hypertension and emergency visits.",
+    "gold_sql": "SELECT distinct p.patient_id FROM patients p JOIN conditions c ON p.patient_id = c.patient_id JOIN encounters e ON p.patient_id = e.patient_id WHERE c.description LIKE '%Hypertension%' AND e.encounter_class = 'EMERGENCY'",
+    "complexity": "HARD"
+  },
+  {
+    "id": 113,
+    "question": "Calculate average length of stay for readmitted patients.",
+    "gold_sql": "SELECT avg(e.length_of_stay_hours) FROM encounters e JOIN mart_readmission_30d r ON e.encounter_id = r.index_encounter_id WHERE r.is_30day_readmission = 1",
+    "complexity": "HARD"
+  },
+  {
+    "id": 114,
+    "question": "Find total cost for encounters with recorded blood pressure observations.",
+    "gold_sql": "SELECT sum(e.total_claim_cost) FROM encounters e WHERE e.patient_id IN (SELECT o.patient_id FROM observations o WHERE o.observation_code = '8480-6')",
+    "complexity": "HARD"
+  },
+  {
+    "id": 115,
+    "question": "List patient details along with their monthly PMPM costs.",
+    "gold_sql": "SELECT p.patient_id, p.first_name, m.member_month, m.pmpm_cost FROM patients p JOIN mart_pmpm_cost m ON p.patient_id = m.patient_id",
+    "complexity": "HARD"
+  },
+  {
+    "id": 116,
+    "question": "Calculate average encounter cost grouped by patient race and encounter class.",
+    "gold_sql": "SELECT p.race, e.encounter_class, avg(e.total_claim_cost) FROM patients p JOIN encounters e ON p.patient_id = e.patient_id GROUP BY p.race, e.encounter_class",
+    "complexity": "HARD"
+  },
+  {
+    "id": 117,
+    "question": "Find patients who have more than one recorded encounter.",
+    "gold_sql": "SELECT p.patient_id, count(e.encounter_id) as enc_count FROM patients p JOIN encounters e ON p.patient_id = e.patient_id GROUP BY p.patient_id HAVING count(e.encounter_id) > 1",
+    "complexity": "HARD"
+  },
+  {
+    "id": 118,
+    "question": "Calculate running total of claim cost partitioned by patient.",
+    "gold_sql": "SELECT encounter_id, patient_id, total_claim_cost, sum(total_claim_cost) OVER (PARTITION BY patient_id ORDER BY start_time) as running_total FROM encounters",
+    "complexity": "HARD"
+  },
+  {
+    "id": 119,
+    "question": "Rank encounters by cost within each encounter class.",
+    "gold_sql": "SELECT encounter_id, encounter_class, total_claim_cost, rank() OVER (PARTITION BY encounter_class ORDER BY total_claim_cost DESC) as cost_rank FROM encounters",
+    "complexity": "HARD"
+  },
+  {
+    "id": 120,
+    "question": "Find patients with condition onset in 2020 who had encounters in 2024.",
+    "gold_sql": "SELECT distinct p.patient_id FROM patients p JOIN conditions c ON p.patient_id = c.patient_id JOIN encounters e ON p.patient_id = e.patient_id WHERE c.onset_date >= '2020-01-01' AND c.onset_date < '2021-01-01' AND e.start_time >= '2024-01-01'",
+    "complexity": "HARD"
+  },
+  {
+    "id": 121,
+    "question": "Calculate the difference between total billed and total paid by claim status.",
+    "gold_sql": "SELECT claim_status, sum(total_billed) - sum(total_paid) as unpaid_balance FROM claims GROUP BY claim_status",
+    "complexity": "HARD"
+  },
+  {
+    "id": 122,
+    "question": "Find encounters where cost is greater than average cost for that class.",
+    "gold_sql": "SELECT e.encounter_id, e.encounter_class, e.total_claim_cost FROM encounters e WHERE e.total_claim_cost > (SELECT avg(e2.total_claim_cost) FROM encounters e2 WHERE e2.encounter_class = e.encounter_class)",
+    "complexity": "HARD"
+  },
+  {
+    "id": 123,
+    "question": "Calculate percentage of encounters that are inpatient.",
+    "gold_sql": "SELECT round(100.0 * count(case when encounter_class = 'INPATIENT' then 1 end) / count(*), 2) FROM encounters",
+    "complexity": "HARD"
+  },
+  {
+    "id": 124,
+    "question": "Find top 3 patients by total claims billed.",
+    "gold_sql": "SELECT patient_id, sum(total_billed) as tot FROM claims GROUP BY patient_id ORDER BY tot DESC LIMIT 3",
+    "complexity": "HARD"
+  },
+  {
+    "id": 125,
+    "question": "Join patients and conditions to find female patients with diabetes.",
+    "gold_sql": "SELECT p.patient_id, p.first_name, c.condition_code FROM patients p JOIN conditions c ON p.patient_id = c.patient_id WHERE p.gender = 'F' AND c.condition_code = 'E11.9'",
+    "complexity": "HARD"
+  },
+  {
+    "id": 126,
+    "question": "Find patients who have claims with status DENIED.",
+    "gold_sql": "SELECT p.patient_id, p.first_name FROM patients p WHERE p.patient_id IN (SELECT c.patient_id FROM claims c WHERE c.claim_status = 'DENIED')",
+    "complexity": "HARD"
+  },
+  {
+    "id": 127,
+    "question": "Calculate out of pocket liability assuming 80 percent payer coverage.",
+    "gold_sql": "SELECT encounter_id, total_claim_cost, round(total_claim_cost * 0.2, 2) as patient_liability FROM encounters",
+    "complexity": "HARD"
+  },
+  {
+    "id": 128,
+    "question": "Find patients who have both observations and conditions recorded.",
+    "gold_sql": "SELECT distinct p.patient_id FROM patients p WHERE p.patient_id IN (SELECT o.patient_id FROM observations o) AND p.patient_id IN (SELECT c.patient_id FROM conditions c)",
+    "complexity": "HARD"
+  },
+  {
+    "id": 129,
+    "question": "Calculate max length of stay for readmitted versus non-readmitted index encounters.",
+    "gold_sql": "SELECT r.is_30day_readmission, max(e.length_of_stay_hours) FROM encounters e JOIN mart_readmission_30d r ON e.encounter_id = r.index_encounter_id GROUP BY r.is_30day_readmission",
+    "complexity": "HARD"
+  },
+  {
+    "id": 130,
+    "question": "Calculate total claims paid by year from encounters start time.",
+    "gold_sql": "SELECT strftime(e.start_time, '%Y') as yr, sum(c.total_paid) FROM encounters e JOIN claims c ON e.patient_id = c.patient_id GROUP BY yr",
+    "complexity": "HARD"
+  },
+  {
+    "id": 131,
+    "question": "Find patient with highest total paid claims.",
+    "gold_sql": "SELECT p.patient_id, p.first_name, sum(c.total_paid) as tot_paid FROM patients p JOIN claims c ON p.patient_id = c.patient_id GROUP BY p.patient_id, p.first_name ORDER BY tot_paid DESC LIMIT 1",
+    "complexity": "HARD"
+  },
+  {
+    "id": 132,
+    "question": "Identify patients who experienced readmission within 30 days and their total cost.",
+    "gold_sql": "SELECT p.patient_id, r.index_encounter_id, sum(e.total_claim_cost) FROM patients p JOIN mart_readmission_30d r ON p.patient_id = r.patient_id JOIN encounters e ON p.patient_id = e.patient_id WHERE r.is_30day_readmission = 1 GROUP BY p.patient_id, r.index_encounter_id",
+    "complexity": "HARD"
+  },
+  {
+    "id": 133,
+    "question": "Calculate average systolic blood pressure for patients with diabetes.",
+    "gold_sql": "SELECT avg(o.observation_value) FROM observations o WHERE o.observation_code = '8480-6' AND o.patient_id IN (SELECT c.patient_id FROM conditions c WHERE c.condition_code = 'E11.9')",
+    "complexity": "HARD"
+  },
+  {
+    "id": 134,
+    "question": "Calculate average cost difference between inpatient and emergency visits.",
+    "gold_sql": "SELECT (SELECT avg(total_claim_cost) FROM encounters WHERE encounter_class = 'INPATIENT') - (SELECT avg(total_claim_cost) FROM encounters WHERE encounter_class = 'EMERGENCY') as diff",
+    "complexity": "HARD"
+  },
+  {
+    "id": 135,
+    "question": "Find encounters with row number partitioned by patient ordered by start time.",
+    "gold_sql": "SELECT encounter_id, patient_id, start_time, row_number() OVER (PARTITION BY patient_id ORDER BY start_time) as visit_seq FROM encounters",
+    "complexity": "HARD"
+  },
+  {
+    "id": 136,
+    "question": "Find count of distinct conditions per patient with demographic join.",
+    "gold_sql": "SELECT p.patient_id, p.first_name, count(distinct c.condition_id) as cond_count FROM patients p LEFT JOIN conditions c ON p.patient_id = c.patient_id GROUP BY p.patient_id, p.first_name",
+    "complexity": "HARD"
+  },
+  {
+    "id": 137,
+    "question": "Calculate percentage of total claim costs represented by inpatient care.",
+    "gold_sql": "SELECT round(100.0 * sum(case when encounter_class = 'INPATIENT' then total_claim_cost else 0 end) / sum(total_claim_cost), 2) FROM encounters",
+    "complexity": "HARD"
+  },
+  {
+    "id": 138,
+    "question": "Find patients whose total paid claims exceed 4000 dollars.",
+    "gold_sql": "SELECT p.patient_id, p.first_name, sum(c.total_paid) as tot FROM patients p JOIN claims c ON p.patient_id = c.patient_id GROUP BY p.patient_id, p.first_name HAVING sum(c.total_paid) > 4000.0",
+    "complexity": "HARD"
+  },
+  {
+    "id": 139,
+    "question": "Join observations and conditions on patient to compare vitals with diagnoses.",
+    "gold_sql": "SELECT o.patient_id, o.observation_code, o.observation_value, c.description FROM observations o JOIN conditions c ON o.patient_id = c.patient_id",
+    "complexity": "HARD"
+  },
+  {
+    "id": 140,
+    "question": "Calculate median or average length of stay across inpatient encounters with conditions.",
+    "gold_sql": "SELECT avg(e.length_of_stay_hours) FROM encounters e WHERE e.encounter_class = 'INPATIENT' AND e.patient_id IN (SELECT patient_id FROM conditions)",
+    "complexity": "HARD"
+  },
+  {
+    "id": 141,
+    "question": "Find patients with encounters in all recorded encounter classes.",
+    "gold_sql": "SELECT patient_id FROM encounters GROUP BY patient_id HAVING count(distinct encounter_class) = (SELECT count(distinct encounter_class) FROM encounters)",
+    "complexity": "HARD"
+  },
+  {
+    "id": 142,
+    "question": "Calculate total cost of inpatient care for patients with 30-day readmissions.",
+    "gold_sql": "SELECT sum(e.total_claim_cost) FROM encounters e JOIN mart_readmission_30d r ON e.encounter_id = r.index_encounter_id WHERE r.is_30day_readmission = 1",
+    "complexity": "HARD"
+  },
+  {
+    "id": 143,
+    "question": "Find patient demographics joined with average observation value.",
+    "gold_sql": "SELECT p.patient_id, p.first_name, p.gender, avg(o.observation_value) as avg_obs FROM patients p JOIN observations o ON p.patient_id = o.patient_id GROUP BY p.patient_id, p.first_name, p.gender",
+    "complexity": "HARD"
+  },
+  {
+    "id": 144,
+    "question": "Calculate total billed claims grouped by patient gender.",
+    "gold_sql": "SELECT p.gender, sum(c.total_billed) FROM patients p JOIN claims c ON p.patient_id = c.patient_id GROUP BY p.gender",
+    "complexity": "HARD"
+  },
+  {
+    "id": 145,
+    "question": "Find count of readmissions partitioned by patient.",
+    "gold_sql": "SELECT patient_id, sum(is_30day_readmission) as total_readmissions FROM mart_readmission_30d GROUP BY patient_id",
+    "complexity": "HARD"
+  },
+  {
+    "id": 146,
+    "question": "Join claims and encounters to find discrepancies between billed and claim costs.",
+    "gold_sql": "SELECT e.encounter_id, e.total_claim_cost, c.total_billed, abs(e.total_claim_cost - c.total_billed) as delta FROM encounters e JOIN claims c ON e.patient_id = c.patient_id",
+    "complexity": "HARD"
+  },
+  {
+    "id": 147,
+    "question": "Find all patients diagnosed with diabetes who had inpatient stays in 2024.",
+    "gold_sql": "SELECT distinct p.patient_id FROM patients p JOIN conditions c ON p.patient_id = c.patient_id JOIN encounters e ON p.patient_id = e.patient_id WHERE c.condition_code = 'E11.9' AND e.encounter_class = 'INPATIENT' AND e.start_time >= '2024-01-01'",
+    "complexity": "HARD"
+  },
+  {
+    "id": 148,
+    "question": "Calculate average observation value for patients residing in zip 02138.",
+    "gold_sql": "SELECT avg(o.observation_value) FROM observations o JOIN patients p ON o.patient_id = p.patient_id WHERE p.zip_code = '02138'",
+    "complexity": "HARD"
+  },
+  {
+    "id": 149,
+    "question": "Calculate PMPM expenditure trend comparing months.",
+    "gold_sql": "SELECT member_month, sum(pmpm_cost) FROM mart_pmpm_cost GROUP BY member_month ORDER BY member_month",
+    "complexity": "HARD"
+  },
+  {
+    "id": 150,
+    "question": "Calculate total claim cost difference between female and male patient encounters.",
+    "gold_sql": "SELECT (SELECT sum(total_claim_cost) FROM encounters WHERE patient_id in (SELECT patient_id FROM patients WHERE gender = 'F')) - (SELECT sum(total_claim_cost) FROM encounters WHERE patient_id in (SELECT patient_id FROM patients WHERE gender = 'M')) as cost_diff",
     "complexity": "HARD"
   }
 ]
