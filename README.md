@@ -3,7 +3,6 @@
 Enterprise-grade, agentic natural-language-to-SQL translation platform achieving **84.2% execution accuracy** on complex clinical and financial data warehouses using **Schema-Guided Constrained Decoding (SGCD)**, **NetworkX Steiner Tree Schema Linking**, and **Execution-Grounded Progressive Self-Correction**.
 
 [![CI](https://github.com/pruthvi51/sqlsage/actions/workflows/ci.yml/badge.svg)](https://github.com/pruthvi51/sqlsage/actions/workflows/ci.yml)
-[![Technical Paper](https://img.shields.io/badge/paper-IEEE%20PDF-red.svg)](paper/sqlsage_architecture_paper.pdf)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Execution Accuracy: 84.2%](https://img.shields.io/badge/execution%20accuracy-84.2%25-brightgreen.svg)](data/)
 [![Hallucinations: 0%](https://img.shields.io/badge/hallucinations-0%25-blue.svg)](src/sqlsage/constrained_decoding/)
@@ -161,9 +160,6 @@ sqlsage/
 │   ├── adr/                     # Architectural Decision Records (0001–0005)
 │   ├── BENCHMARKS.md            # Benchmark methodology & evaluation setup
 │   └── RUNBOOK.md               # Operations & query triage manual
-├── paper/
-│   ├── sqlsage_architecture_paper.tex  # 4-Page IEEE technical report source
-│   └── sqlsage_architecture_paper.pdf  # Compiled research paper
 ├── src/sqlsage/
 │   ├── agent/                   # Ephemeral DuckDB sandbox & self-correction
 │   │   └── self_correction.py
@@ -184,23 +180,7 @@ sqlsage/
 
 ---
 
-## 8. Research Paper & Citation
-
-The 4-page IEEE technical report detailing mathematical formulations, constrained decoding proofs, and ablation studies is available at [paper/sqlsage_architecture_paper.pdf](paper/sqlsage_architecture_paper.pdf).
-
-```bibtex
-@article{gattu2026sqlsage,
-  author = {Gattu, Pruthvi Nag},
-  title = {SQLSage: Schema-Guided Constrained Decoding and Execution-Grounded Progressive Self-Correction for Enterprise Healthcare NL-to-SQL},
-  journal = {Technical Report},
-  year = {2026},
-  url = {https://github.com/pruthvi51/sqlsage}
-}
-```
-
----
-
-## 9. Operations & Governance
+## 8. Operations & Governance
 
 * [Operations Runbook & Triage](docs/RUNBOOK.md)
 * [Performance Benchmark Specification](docs/BENCHMARKS.md)
